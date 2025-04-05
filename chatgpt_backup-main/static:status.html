@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Status</title></head>
+<body>
+  <h1>Status do Sistema</h1>
+  <div id="status-light" style="width: 20px; height: 20px; border-radius: 50%; background-color: grey;"></div>
+  <script>
+    fetch('/status?api_key=seu_token_secreto').then(r => r.json()).then(data => {
+      if (data.status === 'online') {
+        document.getElementById('status-light').style.backgroundColor = 'green';
+      } else {
+        document.getElementById('status-light').style.backgroundColor = 'red';
+      }
+    }).catch(() => {
+      document.getElementById('status-light').style.backgroundColor = 'red';
+    });
+  </script>
+</body>
+</html>

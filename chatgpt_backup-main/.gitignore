@@ -1,0 +1,22 @@
+# Ambientes
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# Backup e arquivos temporários
+*.bak
+*.tmp
+*.zip
+
+# IDEs
+.vscode/
+.idea/
+
+# Outros
+.DS_Store
