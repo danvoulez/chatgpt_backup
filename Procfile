@@ -1,1 +1,1 @@
-worker: bash start.sh
+web: bash chatgpt_backup-main/start.sh
