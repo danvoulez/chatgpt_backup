@@ -1,0 +1,28 @@
+name: Auto-Unzip Uploaded ZIP
+
+on:
+  push:
+    paths:
+      - '**.zip'
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Find and unzip any .zip files
+        run: |
+          for file in $(find . -name '*.zip'); do
+            echo "📦 Descompactando $file..."
+            unzip -o "$file" -d "$(dirname "$file")"
+          done
+
+      - name: Commit unzipped content
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "📂 Unzipped uploaded .zip file"
+          git push
